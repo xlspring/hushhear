@@ -1,16 +1,13 @@
-import {useEffect, useState} from "react";
-import { StyleSheet, Text, View } from 'react-native';
+import {useEffect,} from "react";
 
 import { StatusBar } from 'expo-status-bar';
 import * as NavigationBar from 'expo-navigation-bar';
-import { NavigationContainer } from "@react-navigation/native";
 
-import AppScreens from "./screens/app";
-import {SafeAreaProvider} from "react-native-safe-area-context";
-import LoginScreens from "./screens/login";
+import {Provider} from "react-redux";
+import {store} from "./redux/store";
+import AppNavigation from "./screens";
 
 export default function App() {
-  const [isLoggedIn, setLogIn] = useState(true);
 
   useEffect(() => {
     NavigationBar.setPositionAsync("absolute");
@@ -18,17 +15,9 @@ export default function App() {
   }, []);
 
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        {
-          isLoggedIn ? (
-            <AppScreens />
-          ) : (
-            <LoginScreens />
-          )
-        }
-      </NavigationContainer>
+    <Provider store={store}>
+      <AppNavigation />
       <StatusBar />
-    </SafeAreaProvider>
+    </Provider>
   );
 }
