@@ -15,6 +15,8 @@ export default function App() {
   const colorScheme = useColorScheme();
   const { theme } = useMaterial3Theme({ fallbackSourceColor: "#66ff00" });
 
+  console.log(colorScheme);
+
   const paperTheme = useMemo(
     () =>
       colorScheme === 'dark' ? { ...MD3DarkTheme, colors: theme.dark } : { ...MD3LightTheme, colors: theme.light },
