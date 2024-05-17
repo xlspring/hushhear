@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
+import {useEffect, useState} from "react";
 import { StyleSheet, Text, View } from 'react-native';
 
+import { StatusBar } from 'expo-status-bar';
+import * as NavigationBar from 'expo-navigation-bar';
+import { NavigationContainer } from "@react-navigation/native";
+
+import AppScreens from "./screens/app";
+import {SafeAreaProvider} from "react-native-safe-area-context";
+import LoginScreens from "./screens/login";
+
 export default function App() {
+  const [isLoggedIn, setLogIn] = useState(true);
+
+  useEffect(() => {
+    NavigationBar.setPositionAsync("absolute");
+    NavigationBar.setBackgroundColorAsync("#ffffff01");
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        {
+          isLoggedIn ? (
+            <AppScreens />
+          ) : (
+            <LoginScreens />
+          )
+        }
+      </NavigationContainer>
+      <StatusBar />
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
