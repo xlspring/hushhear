@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const loginSlice = createSlice({
 	name: 'login',
 	initialState: {
-		isLoggedIn: false,
+		isLoggedIn: true,
 	},
 	reducers: {
 		setLogin(state, action) {
