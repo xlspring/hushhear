@@ -19,6 +19,7 @@ export default function App() {
 
   const [isLoaded] = useFonts({
     "GSans-Bold": require("./assets/fonts/ProductSans-Bold.ttf"),
+    "GSans-Regular": require("./assets/fonts/ProductSans-Regular.ttf"),
   });
 
   const handleOnLayout = useCallback(async () => {
