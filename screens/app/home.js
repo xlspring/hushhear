@@ -1,11 +1,12 @@
 import { View } from "react-native";
-import { useTheme } from "react-native-paper";
+import { Portal, useTheme } from "react-native-paper";
 import AppScreenTemplate from "./template";
 import HeadphoneCard from "../../components/headphonePicture";
 import { useSelector } from "react-redux";
 import IconButton from "../../components/iconButton";
 import BatteryTile from "../../components/batteryTile";
 import ANCTile from "../../components/ANCTile";
+import Menu from "../../components/menu";
 
 export default function HomeScreen() {
   const theme = useTheme();
@@ -75,6 +76,9 @@ export default function HomeScreen() {
           </View>
         </View>
       </View>
+      <Portal>
+        <Menu />
+      </Portal>
     </AppScreenTemplate>
   );
 }

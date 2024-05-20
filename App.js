@@ -1,22 +1,27 @@
-import {useCallback, useEffect, useMemo} from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
-import { StatusBar } from 'expo-status-bar';
-import * as NavigationBar from 'expo-navigation-bar';
+import { StatusBar } from "expo-status-bar";
+import * as NavigationBar from "expo-navigation-bar";
 
-import {Provider} from "react-redux";
-import {store} from "./redux/store";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 import AppNavigation from "./screens";
-import {MD3DarkTheme, MD3LightTheme, PaperProvider} from "react-native-paper";
-import {useMaterial3Theme} from "@pchmn/expo-material3-theme";
-import {useColorScheme} from "react-native";
+import {
+  MD3DarkTheme,
+  MD3LightTheme,
+  PaperProvider,
+  Portal,
+} from "react-native-paper";
+import { useMaterial3Theme } from "@pchmn/expo-material3-theme";
+import { useColorScheme } from "react-native";
 
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import Menu from "./components/menu";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-
   const [isLoaded] = useFonts({
     "GSans-Bold": require("./assets/fonts/ProductSans-Bold.ttf"),
     "GSans-Regular": require("./assets/fonts/ProductSans-Regular.ttf"),
@@ -33,8 +38,10 @@ export default function App() {
 
   const paperTheme = useMemo(
     () =>
-      colorScheme === 'dark' ? { ...MD3DarkTheme, colors: theme.dark } : { ...MD3LightTheme, colors: theme.light },
-    [colorScheme, theme]
+      colorScheme === "dark"
+        ? { ...MD3DarkTheme, colors: theme.dark }
+        : { ...MD3LightTheme, colors: theme.light },
+    [colorScheme, theme],
   );
 
   useEffect(() => {
