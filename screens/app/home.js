@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import { Portal, useTheme } from "react-native-paper";
-import AppScreenTemplate from "./template";
+import AppScreenTemplate from "../template";
 import HeadphoneCard from "../../components/headphonePicture";
 import { useSelector } from "react-redux";
 import IconButton from "../../components/iconButton";
@@ -8,7 +8,7 @@ import BatteryTile from "../../components/batteryTile";
 import ANCTile from "../../components/ANCTile";
 import Menu from "../../components/menu";
 
-export default function HomeScreen() {
+export default function HomeScreen(props) {
   const theme = useTheme();
   const headphone = useSelector((state) => state.headphones);
 
@@ -77,7 +77,7 @@ export default function HomeScreen() {
         </View>
       </View>
       <Portal>
-        <Menu />
+        <Menu navigation={props.navigation} />
       </Portal>
     </AppScreenTemplate>
   );

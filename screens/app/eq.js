@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import AppScreenTemplate from "./template";
+import AppScreenTemplate from "../template";
 import { useTheme } from "react-native-paper";
 import VerticalSlider from "rn-vertical-slider";
 import { GestureHandlerRootView } from "react-native-gesture-handler";

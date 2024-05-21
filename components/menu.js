@@ -4,11 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../redux/reducers/menu";
 import { Line } from "react-native-svg";
 import MenuItem from "./menuItem";
+import { useNavigation } from "@react-navigation/native";
+import { setLogin } from "../redux/reducers/login";
 
 export default function Menu(props) {
   const visible = useSelector((state) => state.menu.visible);
   const dispatch = useDispatch();
   const theme = useTheme();
+  const navigation = props.navigation;
 
   return (
     <Modal
@@ -82,11 +85,34 @@ export default function Menu(props) {
         <MenuItem
           icon={"account-multiple"}
           text={"Switch account"}
-          onPress={() => console.log("help")}
+          onPress={() => {
+            dispatch(setLogin(false));
+          }}
         />
-        <MenuItem icon={"music-box-multiple"} text={"Sound library"} />
-        <MenuItem icon={"crown-circle"} text={"HushHear+"} />
-        <MenuItem icon={"information"} text={"About"} />
+        <MenuItem
+          icon={"music-box-multiple"}
+          text={"Sound library"}
+          onPress={() => {
+            navigation.navigate("menuScreens", { screen: "library" });
+            dispatch(toggleMenu(false));
+          }}
+        />
+        <MenuItem
+          icon={"crown-circle"}
+          text={"HushHear+"}
+          onPress={() => {
+            navigation.navigate("menuScreens", { screen: "premium" });
+            dispatch(toggleMenu(false));
+          }}
+        />
+        <MenuItem
+          icon={"information"}
+          text={"About"}
+          onPress={() => {
+            navigation.navigate("menuScreens", { screen: "about" });
+            dispatch(toggleMenu(false));
+          }}
+        />
       </View>
       <Text
         style={{

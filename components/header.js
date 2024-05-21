@@ -8,23 +8,39 @@ import {
 } from "react-native-paper";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../redux/reducers/menu";
+import { useNavigation } from "@react-navigation/native";
 
-export default function Header() {
+export default function Header(props) {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   return (
     <HeaderContainer>
-      <IconButton
-        icon={"plus"}
-        size={36}
-        style={{
-          marginHorizontal: 0,
-          marginVertical: 0,
-          height: 52,
-          width: 52,
-        }}
-      />
+      {props.back ? (
+        <IconButton
+          icon={"arrow-left"}
+          size={36}
+          style={{
+            marginHorizontal: 0,
+            marginVertical: 0,
+            height: 52,
+            width: 52,
+          }}
+          onPress={() => navigation.goBack()}
+        />
+      ) : (
+        <IconButton
+          icon={"plus"}
+          size={36}
+          style={{
+            marginHorizontal: 0,
+            marginVertical: 0,
+            height: 52,
+            width: 52,
+          }}
+        />
+      )}
       <View
         style={{
           display: "flex",
