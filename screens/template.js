@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import styled from "styled-components/native";
-import Header from "../../components/header";
+import Header from "../components/header";
 
 export default function AppScreenTemplate(props) {
   console.log(props.additionalStyles);
@@ -18,7 +18,7 @@ export default function AppScreenTemplate(props) {
         },
       ]}
     >
-      <Header />
+      <Header back={props.back} />
       <View style={[props.additionalStyles, { height: "100%" }]}>
         {props.children}
       </View>

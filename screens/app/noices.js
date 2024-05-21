@@ -1,5 +1,5 @@
 import { View, Text, ScrollView } from "react-native";
-import AppScreenTemplate from "./template";
+import AppScreenTemplate from "../template";
 import { useTheme } from "react-native-paper";
 import ToggleItem from "../../components/toggleItem";
 
