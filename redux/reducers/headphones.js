@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const headphonesSlice = createSlice({
   name: "headphones",
   initialState: {
-    name: "pfxel's headphones",
+    name: "HushHear Pro",
     pic: "../assets/headphones.png",
   },
   reducers: {

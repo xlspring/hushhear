@@ -7,10 +7,15 @@ import IconButton from "../../components/iconButton";
 import BatteryTile from "../../components/batteryTile";
 import ANCTile from "../../components/ANCTile";
 import Menu from "../../components/menu";
+import IntensitySlider from "../../components/intensitySlider";
+import DeviceModal from "./deviceModal";
 
 export default function HomeScreen(props) {
   const theme = useTheme();
   const headphone = useSelector((state) => state.headphones);
+  const deviceModalVisible = useSelector(
+    (state) => state.menu.deviceModalVisible,
+  );
 
   return (
     <AppScreenTemplate
@@ -59,8 +64,8 @@ export default function HomeScreen(props) {
               justifyContent: "space-between",
             }}
           >
-            <IconButton name={"magnify"} size={46} />
-            <IconButton name={"link-variant"} size={46} />
+            <IconButton name={"magnify"} secondName={"stop"} size={46} />
+            <IconButton name={"link-variant"} secondName={"lock"} size={46} />
           </View>
           <View
             style={{
@@ -71,13 +76,13 @@ export default function HomeScreen(props) {
               justifyContent: "space-between",
             }}
           >
-            <IconButton name={"magnify"} size={46} />
-            <IconButton name={"link-variant"} size={46} />
+            <IntensitySlider />
           </View>
         </View>
       </View>
       <Portal>
         <Menu navigation={props.navigation} />
+        {deviceModalVisible ? <DeviceModal /> : null}
       </Portal>
     </AppScreenTemplate>
   );

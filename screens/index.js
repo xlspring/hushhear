@@ -10,7 +10,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigation(props) {
-  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+  // const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+
+  const isLoggedIn = true;
 
   return (
     <SafeAreaProvider>
