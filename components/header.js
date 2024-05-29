@@ -7,7 +7,7 @@ import {
   useTheme,
 } from "react-native-paper";
 import { useDispatch } from "react-redux";
-import { toggleMenu } from "../redux/reducers/menu";
+import { toggleDeviceModal, toggleMenu } from "../redux/reducers/menu";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Header(props) {
@@ -39,6 +39,7 @@ export default function Header(props) {
             height: 52,
             width: 52,
           }}
+          onPress={() => dispatch(toggleDeviceModal(true))}
         />
       )}
       <View

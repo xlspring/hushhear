@@ -8,10 +8,14 @@ import BatteryTile from "../../components/batteryTile";
 import ANCTile from "../../components/ANCTile";
 import Menu from "../../components/menu";
 import IntensitySlider from "../../components/intensitySlider";
+import DeviceModal from "./deviceModal";
 
 export default function HomeScreen(props) {
   const theme = useTheme();
   const headphone = useSelector((state) => state.headphones);
+  const deviceModalVisible = useSelector(
+    (state) => state.menu.deviceModalVisible,
+  );
 
   return (
     <AppScreenTemplate
@@ -78,6 +82,7 @@ export default function HomeScreen(props) {
       </View>
       <Portal>
         <Menu navigation={props.navigation} />
+        {deviceModalVisible ? <DeviceModal /> : null}
       </Portal>
     </AppScreenTemplate>
   );
